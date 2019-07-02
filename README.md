@@ -1,10 +1,12 @@
 # todo_list
 Simple to do list. 
 Custom REST API's made for flask
-Includeing:
-- /add
-- /delete
-- /-list
+Including:
+- /add (POST)
+- /delete (POST)
+- /list (GET)
+
+Access standard local host to view simple table (1 example is already included)
 
 ## Running
 1. Start a virtual enviornment
