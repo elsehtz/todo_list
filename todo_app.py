@@ -56,16 +56,19 @@ def add_note():
 @app.route("/delete", methods=['POST'])
 def delete():
     id = request.json['id']
-    item = Note.query.get(id)
+    deleted = []
+    for i in id:
+        try:
+            item = Note.query.get(i)
+            db.session.delete(item)
 
-    try:
-        db.session.delete(item)
-        db.session.commit()
+            deleted.append(i)
 
-        return  todo_schema.jsonify(item)
+        except:
+            pass
 
-    except Exception as e:
-        return f'<h1>Could not delete</h1>'
+    db.session.commit()
+    return f'<h1>Successfully deleted ids: {deleted}</h1>'
 
 @app.route("/list", methods=['GET'])
 def get_list():
